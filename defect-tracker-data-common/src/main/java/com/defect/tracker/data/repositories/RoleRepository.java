@@ -1,0 +1,10 @@
+package com.defect.tracker.data.repositories;
+
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.defect.tracker.data.entities.Role;
+
+public interface RoleRepository extends JpaRepository<Role,Long>{
+
+}

@@ -1,0 +1,12 @@
+package com.defect.tracker.data.dto;
+
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
+import com.defect.tracker.data.entities.Project;
+
+public class ModuleDto {
+	private long id;
+	private String name;
+	private Long projectId;
+}

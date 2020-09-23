@@ -1,0 +1,21 @@
+package com.defect.tracker.data.entities;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(schema = "defect-tracker", name="sub-module")
+public class SubModule {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+	private String name;
+	@ManyToOne
+	@JoinColumn(name = "moduleId", nullable = false)
+	private Module module;
+}

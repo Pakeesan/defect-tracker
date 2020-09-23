@@ -1,0 +1,23 @@
+package com.defect.tracker.server.service;
+
+import java.util.List;
+
+import javax.transaction.Transactional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.defect.tracker.data.entities.Project;
+import com.defect.tracker.data.repositories.ProjectRepository;
+
+@Service
+public class ProjectServiceImpl implements ProjectService{
+	@Autowired
+	private ProjectRepository projectRepository;
+	@Transactional
+	public List<Project> getAllProject() {
+		
+		return projectRepository.findAll();
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.defect.tracker.server.service;
+
+public class ProjectService {
+
+}

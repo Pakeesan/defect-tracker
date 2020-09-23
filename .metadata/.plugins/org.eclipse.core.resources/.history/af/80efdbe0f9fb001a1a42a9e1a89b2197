@@ -1,0 +1,5 @@
+package com.defect.tracker.data.enums;
+
+public enum Role {
+ 
+}

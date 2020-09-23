@@ -1,0 +1,17 @@
+package com.defect.tracker.data.dto;
+
+import java.util.List;
+
+import javax.persistence.FetchType;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+
+import com.defect.tracker.data.entities.Role;
+
+public class UserRequsestDto {
+	private long id;
+	private String name;
+	private List<Long> roleId;
+	private String password;
+}

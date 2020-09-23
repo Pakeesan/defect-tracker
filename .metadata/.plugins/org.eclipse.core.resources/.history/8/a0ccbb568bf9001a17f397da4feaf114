@@ -1,0 +1,19 @@
+package com.defect.tracker.data.mapper;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
+
+@Component
+public class Mapper {
+	private ModelMapper createModelMapper() {
+	    ModelMapper mapper = new ModelMapper();
+	   
+	    return mapper;
+	  }
+	public <T> T map(Object source,Class<T> targetType) {
+		ModelMapper mapper=createModelMapper();
+		mapper.getConfiguration().setAmbiguityIgnored(true);
+		return map(source, targetType);
+	}
+	
+}

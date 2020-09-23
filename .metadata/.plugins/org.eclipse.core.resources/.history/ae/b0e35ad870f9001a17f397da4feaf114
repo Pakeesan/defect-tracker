@@ -1,0 +1,12 @@
+package com.defect.tracker.data.entities;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(schema = "defect-tracker", name="user")
+public class User {
+ @Id
+ private long id;
+}

@@ -1,0 +1,5 @@
+package com.defect.tracker.data.entities;
+
+public class User {
+
+}

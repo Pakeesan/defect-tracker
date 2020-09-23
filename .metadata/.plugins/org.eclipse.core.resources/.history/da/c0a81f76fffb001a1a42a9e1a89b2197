@@ -1,0 +1,5 @@
+package com.defect.tracker.data.dto;
+
+public class UserRequsestDto {
+
+}

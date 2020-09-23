@@ -1,0 +1,45 @@
+package com.defect.tracker.server.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.defect.tracker.data.dto.SubModuleRequestDto;
+import com.defect.tracker.data.dto.SubModuleResposeDto;
+import com.defect.tracker.data.entities.SubModule;
+import com.defect.tracker.data.mapper.Mapper;
+import com.defect.tracker.server.service.SubModuleService;
+@RestController
+public class SubModuleController {
+	@Autowired
+	private SubModuleService subModuleService;
+	
+	@Autowired
+	private Mapper mapper;
+	
+	@PostMapping("/submodule")
+	public String saveSubModule(@RequestBody SubModuleRequestDto subModuleDto) {
+		subModuleService.createSubModule(mapper.map(subModuleDto,SubModule.class),subModuleDto.getUserIds());
+		return "added";
+	}
+	@GetMapping("/submodule")
+	public List<SubModuleResposeDto> getAllSubModules(){
+		return mapper.map(subModuleService.getAllSubModule(),SubModuleResposeDto.class);
+	}
+	@PutMapping("/submodule")
+	public String updateSubModule(@RequestBody SubModuleRequestDto subModuleDto) {
+		subModuleService.createSubModule(mapper.map(subModuleDto,SubModule.class),subModuleDto.getUserIds());
+		return "updated";
+	}
+	@GetMapping("/submodule/{id}")
+	public SubModule getSubModuleById(@PathVariable Long id){
+		 return subModuleService.getSubModuleById(id);		
+	}
+
+}

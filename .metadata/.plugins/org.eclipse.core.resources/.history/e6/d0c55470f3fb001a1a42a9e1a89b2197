@@ -1,0 +1,37 @@
+package com.defect.tracker.server.service.auth;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import com.defect.tracker.data.entities.User;
+import com.defect.tracker.data.repositories.UserRepository;
+
+public class UserServiceImpl implements UserService{
+	@Autowired
+	private UserRepository userRepository;
+	@Override
+	public void createUser(User user) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public List<User> getAlluser() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public User getUserById(Long id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void deleteUserById(Long id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

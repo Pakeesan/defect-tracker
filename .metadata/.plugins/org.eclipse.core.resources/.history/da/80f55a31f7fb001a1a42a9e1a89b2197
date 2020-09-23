@@ -1,0 +1,46 @@
+package com.defect.tracker.server.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.defect.tracker.data.dto.ModuleRequestDto;
+import com.defect.tracker.data.dto.ModuleResponseDto;
+import com.defect.tracker.data.dto.SubModuleRequestDto;
+import com.defect.tracker.data.entities.Module;
+import com.defect.tracker.data.mapper.Mapper;
+import com.defect.tracker.server.service.ModuleService;
+import com.defect.tracker.server.service.SubModuleService;
+
+public class SubModuleController {
+	@Autowired
+	private SubModuleService subModuleService;
+	
+	@Autowired
+	private Mapper mapper;
+	
+	@PostMapping("/module")
+	public String saveSubModule(@RequestBody SubModuleRequestDto moduleDto) {
+		subModuleService.createSubModule(mapper.map(moduleDto,Module.class));
+		return "added";
+	}
+	@GetMapping("/module")
+	public List<ModuleResponseDto> getAllModules(){
+		return mapper.map(moduleService.getAllModule(),ModuleResponseDto.class);
+	}
+	@PutMapping("/module")
+	public String updateModule(@RequestBody Module module) {
+		moduleService.createModule(module);
+		return "updated";
+	}
+	@GetMapping("/Module/{id}")
+	public Module getModuleById(@PathVariable Long id){
+		 return moduleService.getModuleById(id);			
+	}
+
+}

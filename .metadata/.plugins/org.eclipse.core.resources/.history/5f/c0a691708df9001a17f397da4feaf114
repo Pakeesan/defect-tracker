@@ -1,0 +1,7 @@
+package com.defect.tracker.data.dto;
+
+public class ModuleResponseDto {
+	private long id;
+	private String name;
+	private Long projectName;
+}

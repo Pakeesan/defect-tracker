@@ -1,0 +1,43 @@
+package com.defect.tracker.server.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.defect.tracker.data.entities.SubModule;
+import com.defect.tracker.data.entities.User;
+import com.defect.tracker.data.repositories.SubModuleRepository;
+import com.defect.tracker.data.repositories.UserRepository;
+@Service
+public class SubModuleServiceImpl implements SubModuleService{
+	@Autowired
+	private SubModuleRepository subModuleRepository;
+	@Autowired
+	private UserRepository userRepository;
+	
+	@Override
+	public void createSubModule(SubModule subModule,List<Long> userIds) {
+		List<User> userList=new ArrayList<User>();
+		userIds.forEach(id -> userList.add(userRepository.findById(id).get()));
+		subModule.setUser(userList);
+		subModuleRepository.save(subModule);
+	}
+
+	@Override
+	public List<SubModule> getAllSubModule() {
+		return subModuleRepository.findAll();
+	}
+
+	@Override
+	public SubModule getSubModuleById(Long id) {
+		return subModuleRepository.getOne(id);
+	}
+
+	@Override
+	public void deleteSubModuleById(Long id) {
+		subModuleRepository.deleteById(id);
+	}
+
+}

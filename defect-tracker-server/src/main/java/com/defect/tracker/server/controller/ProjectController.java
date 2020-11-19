@@ -3,6 +3,7 @@ package com.defect.tracker.server.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -40,6 +41,12 @@ public class ProjectController {
 	@GetMapping("/project/{id}")
 	public Project getProjectById(@PathVariable Long id){
 		 return projectService.getProjectById(id);			
+	}
+	
+	@DeleteMapping("/project/{id}")
+	public String deleteProjectById(@PathVariable Long id){
+		  projectService.deleteProjectById(id);	
+		  return "deleted";
 	}
 
 }

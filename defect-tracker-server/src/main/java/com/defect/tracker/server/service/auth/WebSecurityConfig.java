@@ -17,6 +17,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		.passwordEncoder(new BCryptPasswordEncoder())
 		.withUser("san")
 		.password("$2y$10$WYI8/0dTM5y.0VZKCEbFWuU1Y39zOx6V3oFj6EZvh6AGXp0T.VQVK")
+		.roles("ADMIN")
+		.and()
+		.withUser("user")
+		.password("$2y$10$WYI8/0dTM5y.0VZKCEbFWuU1Y39zOx6V3oFj6EZvh6AGXp0T.VQVK")
 		.roles("USER")
 		;
 	}
@@ -24,6 +28,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests()
+		.antMatchers("/log").permitAll()
+		.antMatchers("/project").hasAnyRole("ADMIN","USER")
+		.antMatchers("/module").hasRole("ADMIN")
 		.anyRequest().authenticated()
 		.and()
 		.httpBasic()
